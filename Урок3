@@ -1,0 +1,120 @@
+# --------------урок 3 задача 1----------
+#print('Урок 3. Задача 1')
+#def delim ():
+#    vvod_1=float(input('Введите делимое:'))
+#    vvod_2=float(input('Введите делитель:'))
+#    if vvod_2==0:
+#        print('На 0 делить нельзя !!!')
+#    else:
+#        otvet=vvod_1/vvod_2
+#        print(f"Ответ: {vvod_1}/{vvod_2} = {otvet:.4f}")
+
+#delim()
+
+print('Урок 3. Задача 1')
+def delim2 ():
+    try:
+        """Функция деления двух чисел."""
+        vvod_1=float(input('Введите делимое:'))
+        vvod_2=float(input('Введите делитель:'))
+        otvet = vvod_1 / vvod_2
+        print(f"Ответ: {vvod_1}/{vvod_2} = {otvet:.4f}")
+    except ZeroDivisionError:
+        print('На 0 делить нельзя !!!')
+    return
+
+delim2()
+# ---------------------------------------------
+print('Урок 3. Задача 2')
+def data_polz(imy,fam,y_rojd,gorod,mail,telef):
+    return f"Данные о пользователе: Имя: {imy}, Фамилия: {fam}, Год рождения: {y_rojd}, Город проживания: {gorod}," \
+           f"E-mail: {mail}, Телефон {telef}"
+def vse_polz():
+    try:
+        par_imy=str(input("Введите имя пользователя:"))
+        par_fam=str(input("Введите фамилию пользователя:"))
+        par_y_rojd=int(input("Введите год рождения пользователя:"))
+        par_gorod=str(input("Введите город проживания пользователя:"))
+        par_mail=str(input("Введите e-mail пользователя:"))
+        par_telef=int(input("Введите телефон пользователя:"))
+        print(data_polz(imy=par_imy.lower().capitalize(),fam=par_fam.lower().capitalize(),y_rojd=par_y_rojd,gorod=par_gorod,mail=par_mail,telef=par_telef))
+    except ValueError:
+        print("Год рождения и номер телефона тип - число!!!")
+    return
+vse_polz()
+# ---------------------------------------------
+print('Урок 3. Задача 3')
+def my_func(par_1,par_2,par_3):
+    spisok = [par_1, par_2, par_3]
+    print("Наш список:", spisok)
+    spisok.remove(min(spisok))
+    print("Наибольшие два числа списка:", spisok)
+    spisok_sum=sum(spisok)
+    print("Сумма наибольших двух чисел списка:", spisok_sum)
+my_func(10,20,30)
+# ---------------------------------------------
+print('Урок 3. Задача 4. 1 вариант')
+def stepen(par_1,par_2):
+    par_3=1/(par_1**abs(par_2))
+    print(round(par_3,4))
+
+stepen(par_1=float(input("Введите число, которое необходимо возвести в степень:")),
+       par_2=int(input("Введите отрицательную степень числа:")))
+
+print('Урок 3. Задача 4. 2 вариант')
+def stepen2(par_1,par_2):
+    w=1
+    par_3=1
+    for i in range(abs(par_2)):
+        w=w*par_1
+    #print(w,par_1)
+    return w
+
+par_3=1/int(stepen2(par_1=int(input("Введите число, которое необходимо возвести в степень:")),
+       par_2=int(input("Введите отрицательную степень числа:"))))
+print(round(par_3,4))
+
+# ---------------------------------------------
+print('Урок 3. Задача 5')
+def summa_Q():
+    sum_vsego=0
+    q_quit=0
+    while q_quit==0:
+        chislo = (input("Введите числа через пробел или Q (quit): ")).split()
+        #chislo2=print((list(chislo)))
+        sum_chislo = 0
+        for i in range(len(chislo)):
+            if chislo[i]=="Q" or chislo[i]=="q" or chislo[i]=="Й" or chislo[i]=="й":
+                q_quit=1
+                break
+            else:
+                sum_chislo=sum_chislo+int(chislo[i])
+                #print("Строка",sum_chislo)
+        sum_vsego=sum_vsego+sum_chislo
+        print("Сумма всех введенных строк: ",sum_vsego,"Сумма последней введенной строки: ",sum_chislo)
+
+summa_Q()
+
+# ---------------------------------------------
+print('Урок 3. Задача 6')
+def int_func():
+    slovo=input("Введите слово из маленьких латинских букв: ") #.split()
+    #lat_b=slovo.isascii()
+    # if lat_b==True:
+    #     print("Введен верный символ!!!")
+    #else:
+    #    print("Введен неверный символ!!!")
+    lat_b=0
+    for i in range(0,len(slovo)):
+        #print(slovo[i])
+        #if ord(slovo[i]) <= 97 or ord(slovo[i]) >= 122:
+        if 97<=ord(slovo[i])<=122:
+            lat_b=1
+            break
+        else:
+            print("Введен неверный символ!!!", slovo[i])
+            lat_b=0
+    if lat_b==1:
+     print(slovo.title())
+
+int_func()
